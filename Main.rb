@@ -40,8 +40,18 @@ class Account
   end
   
   #create method for seeing all users
+   def display_all_users
+   end
+   
+  #create method for following a user
+   def follow_user
+   end
    
   #create method for writing post
+   def write_post
+   end
   
-  
+  #create method to view followed user's posts
+   def display_followed_posts
+   end
 end
