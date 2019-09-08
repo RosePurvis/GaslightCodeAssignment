@@ -1,4 +1,10 @@
 =begin
+Writer: Rosalie Purvis
+Date Started: 9/7/2019
+Name: Main.rb
+=end
+
+=begin
 This will be the main program for my Coding Challenge
 The challenge is outlined in the README file, and can be referenced there. 
 =end
@@ -12,4 +18,14 @@ I will layout everything in comments, then begin adding in the code.
 create the class for an account, asking for parameters of username and password
 create a way for user to make a post-to be flushed out later
 create way for user to follow another user-to be flushed out later
+will not be creating a clickable user interface, instead will simply do line prompts
 =end
+
+#Create the account Class
+class Account
+  def initialize(username,password)
+    @username = username
+    @password=password
+    
+  end
+end
