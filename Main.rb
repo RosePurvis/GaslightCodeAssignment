@@ -93,11 +93,14 @@ entered_username =gets.chomp
 puts "Enter password: "
 entered_password = gets.chomp
 #check for account
-if entered_password==@@username
-   if entered_password == @@username :@@password
-      puts "Login Successful!
-   else 
-      password_error
+if users[entered_username].nil?
+   username_error
+ else 
+      if users.value == entered_password
+         puts "You're Logged in!"
+      else
+         password_error
+      end
    end
 else
    username_error
