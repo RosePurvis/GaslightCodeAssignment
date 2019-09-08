@@ -71,6 +71,10 @@ class Account
    end
 end
 
+#first step is ask a person to sign up or log in!
+puts "Would you like to sign up or log in? "
+input =gets.chomp.downcase
+
 #create an account
 #ask for desired user name
 puts "Enter desired username: "
@@ -93,7 +97,7 @@ entered_username =gets.chomp
 puts "Enter password: "
 entered_password = gets.chomp
 #check for account
-if users.key = entered_username
+if users.key = entered_username #having problems getting the users hash pulled, next step to investigate correct use of calling
     if users.value == entered_password
          puts "You're Logged in!"
       else
@@ -103,5 +107,29 @@ if users.key = entered_username
 else 
      username_error
 end
-   
 
+#now that they are logged in, need to ask what action they would like to do!
+puts "What would you like to do? write post, follow user, see newsfeed?"
+action =gets.chomp.downcase
+case action
+  when "write post"
+  	puts "What would you like to post?: "
+    post = gets.chomp
+   posts[post] #relook at how to add things to hashes
+  
+  
+  when "follow user"
+  	puts "Give username: "
+  name =gets.chomp
+  if users[name].nil?
+    puts "This user doesnt exist"
+  else 
+    followed_users[name]
+    puts "You are now following #{name}!"
+  end
+  
+  when "see newsfeed"
+  	followed_posts
+ 
+  
+end
