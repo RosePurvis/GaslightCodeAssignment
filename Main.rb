@@ -75,7 +75,16 @@ end
 #ask for desired user name
 puts "Enter desired username: "
 #take the given input and assign it to username hash
-@@username=gets.chomp
+new_user=gets.chomp
+#get desired password
+puts "Enter desired password: "
+new_password = gets.chomp
+#get Name
+puts "Enter Name: "
+new_name=gets.chomp
+
+#add new user to users hash in account class
+new_account = Account.new(new_user,new_password)
 
 
 #get user input for signing in
