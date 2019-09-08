@@ -39,4 +39,9 @@ class Account
     return "Incorrect Username"
   end
   
+  #create method for seeing all users
+   
+  #create method for writing post
+  
+  
 end
