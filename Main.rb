@@ -79,14 +79,28 @@ new_user=gets.chomp
 #get desired password
 puts "Enter desired password: "
 new_password = gets.chomp
-#get Name
-puts "Enter Name: "
-new_name=gets.chomp
+
 
 #add new user to users hash in account class
 new_account = Account.new(new_user,new_password)
+puts "Welcome, #{new_user}!"
 
 
 #get user input for signing in
 puts "Enter Username: "
+entered_username =gets.chomp
+#get password
+puts "Enter password: "
+entered_password = gets.chomp
+#check for account
+if entered_password==@@username
+   if entered_password == @@username :@@password
+      puts "Login Successful!
+   else 
+      password_error
+   end
+else
+   username_error
+end
+   
 
