@@ -45,10 +45,12 @@ class Account
   
   #create method for seeing all users
    def display_all_users
+      #returns the users hash. Ideally this is in a better list format, but I will come back to this
+      return @@users
    end
    
   #create method for following a user
-   def follow_user
+   def follow_user(
    end
    
   #create method for writing post
