@@ -52,7 +52,11 @@ class Account
    end
    
   #create method for writing post
-   def write_post
+   def write_post(new)
+      time=Time.now
+      @@posts[new]=time
+      puts "You've made a new post at #{time}!"
+      
    end
   
   #create method to view followed user's posts
