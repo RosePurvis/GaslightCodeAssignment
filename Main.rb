@@ -23,9 +23,20 @@ will not be creating a clickable user interface, instead will simply do line pro
 
 #Create the account Class
 class Account
+   #initialize with username and password
   def initialize(username,password)
     @username = username
     @password=password
-    
   end
+  
+    
+ #create the method for handling incorrect passwords  
+  def password_error
+    return "Incorrect Password"
+  end
+  #create the method for handling incorrect username
+  def username_error
+    return "Incorrect Username"
+  end
+  
 end
