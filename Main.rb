@@ -2,9 +2,7 @@
 Writer: Rosalie Purvis
 Date Started: 9/7/2019
 Name: Main.rb
-=end
 
-=begin
 This will be the main program for my Coding Challenge
 The challenge is outlined in the README file, and can be referenced there. 
 =end
@@ -37,13 +35,18 @@ class Account
     return "Incorrect Password"
   end
   #create the method for handling incorrect username
-  def username_error
-    return "Incorrect Username"
+  def username_error(username)
+     #if @username == username
+        
+     #else
+      return "Incorrect Username"
+    # end
+     
   end
   
   #create method for seeing all users
    def display_all_users
-      #returns the users hash. Ideally this is in a better list format, but I will come back to this
+      #returns the users hash. Ideally this is in a better list format, next step to research better formatting
       return @@users
    end
    
@@ -62,5 +65,19 @@ class Account
   
   #create method to view followed user's posts
    def display_followed_posts
+      #most_recent = lambda{|x| x < Time.now}
+      followed_posts=@@posts.select(@@followed_users)
+      return followed_posts #ideally this is in chronological order, next step is to research how this would be handled
    end
 end
+
+#create an account
+#ask for desired user name
+puts "Enter desired username: "
+#take the given input and assign it to username hash
+@@username=gets.chomp
+
+
+#get user input for signing in
+puts "Enter Username: "
+
