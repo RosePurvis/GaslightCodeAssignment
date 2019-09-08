@@ -23,6 +23,10 @@ will not be creating a clickable user interface, instead will simply do line pro
 
 #Create the account Class
 class Account
+   #create the users hash as global so it can be accessed from anywhere in the program
+   @@users=Hash.new
+   #create the posts hash to hold all posts, later I can sort out the ones just for my followed users
+   @@posts=Hash.new
    #initialize with username and password
   def initialize(username,password)
     @username = username
