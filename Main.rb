@@ -10,11 +10,6 @@ The challenge is outlined in the README file, and can be referenced there.
 =end
 
 =begin
-After completing a Ruby beginner course, I am going to make twitter using classes, methods, etc. 
-I will layout everything in comments, then begin adding in the code. 
-=end
-
-=begin
 create the class for an account, asking for parameters of username and password
 create a way for user to make a post-to be flushed out later
 create way for user to follow another user-to be flushed out later
@@ -27,6 +22,9 @@ class Account
    @@users=Hash.new
    #create the posts hash to hold all posts, later I can sort out the ones just for my followed users
    @@posts=Hash.new
+   #create a has just for followed users
+   @@followed_users=Hash.new
+   
    #initialize with username and password
   def initialize(username,password)
     @username = username
@@ -50,7 +48,8 @@ class Account
    end
    
   #create method for following a user
-   def follow_user(
+   def follow_user(username)
+      @@followed_users = users.select(username)
    end
    
   #create method for writing post
