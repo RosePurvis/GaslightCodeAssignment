@@ -68,45 +68,48 @@ class Account
    end
 end
 #In here is where in the next step I would initate a loop to guarantee that the user has actually signed in before progressing
+current = false
+until current == true
+   #first step is ask a person to sign up or log in!
+   puts "Would you like to sign up or log in? "
+   input =gets.chomp.downcase
 
-#first step is ask a person to sign up or log in!
-puts "Would you like to sign up or log in? "
-input =gets.chomp.downcase
-
-if input == "sign up"
-   #create an account
-   #ask for desired user name
-   puts "Enter desired username: "
-   #take the given input and assign it to username hash
-   new_user=gets.chomp
-   #get desired password
-   puts "Enter desired password: "
-   new_password = gets.chomp
+   if input == "sign up"
+      #create an account
+      #ask for desired user name
+      puts "Enter desired username: "
+      #take the given input and assign it to username hash
+      new_user=gets.chomp
+      #get desired password
+      puts "Enter desired password: "
+      new_password = gets.chomp
 
 
-   #add new user to users hash in account class, initialize the class
-   current_account = Account.new(new_user,new_password)
-   puts "Welcome, #{new_user}!"
-else
+      #add new user to users hash in account class, initialize the class
+      current_account = Account.new(new_user,new_password)
+      puts "Welcome, #{new_user}!"
+      
+   else
 
-   #get user input for signing in
-   #need a way to initialize the class (or maybe at this point I need two different classes/ a different approach to this.)
-   puts "Enter Username: "
-   entered_username =gets.chomp
-   #get password
-   puts "Enter password: "
-   entered_password = gets.chomp
-   #check for account
-   current_account=Account.new(entered_username,entered_password)
-   if $users.keys == entered_username #having problems getting the users hash pulled, next step to investigate correct use of calling
-       if $users.values == entered_password
-            puts "You're Logged in!"
-       else
-           current_account.password_error
-       end
+      #get user input for signing in
+      puts "Enter Username: "
+      entered_username =gets.chomp
+      #get password
+      puts "Enter password: "
+      entered_password = gets.chomp
+      #check for account
+      current_account=Account.new(entered_username,entered_password)
+      if $users.keys == entered_username #having problems getting the users hash pulled, next step to investigate correct use of calling
+          if $users.values == entered_password
+               puts "You're Logged in!"
+          else
+              current_account.password_error
+          end
 
-   else 
-     current_account.username_error
+      else 
+        current_account.username_error
+      end
+      current = true
    end
 end
 
