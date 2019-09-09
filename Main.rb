@@ -17,11 +17,11 @@ will not be creating a clickable user interface, instead will simply do line pro
 #Create the account Class
 class Account
    #create the users hash as global so it can be accessed from anywhere in the program
-   @@users=Hash.new
+   $users=Hash.new
    #create the posts hash to hold all posts, later I can sort out the ones just for my followed users
-   @@posts=Hash.new
+   $posts=Hash.new
    #create a has just for followed users
-   @@followed_users=Hash.new
+   $followed_users=Hash.new
    
    #initialize with username and password
   def initialize(username,password)
@@ -47,18 +47,18 @@ class Account
   #create method for seeing all users
    def display_all_users
       #returns the users hash. Ideally this is in a better list format, next step to research better formatting
-      return @@users
+      return $users
    end
    
   #create method for following a user
    def follow_user(username)
-      @@followed_users = users.select(username)
+      $followed_users = users.select(username)
    end
    
   #create method for writing post
    def write_post(new)
       time=Time.now
-      @@posts[new]=time
+      $posts[new]=time
       puts "You've made a new post at #{time}!"
       
    end
@@ -66,15 +66,17 @@ class Account
   #create method to view followed user's posts
    def display_followed_posts
       #most_recent = lambda{|x| x < Time.now}
-      followed_posts=@@posts.select(@@followed_users)
+      followed_posts=$posts.select($followed_users)
       return followed_posts #ideally this is in chronological order, next step is to research how this would be handled
    end
 end
+
 
 #first step is ask a person to sign up or log in!
 puts "Would you like to sign up or log in? "
 input =gets.chomp.downcase
 
+if input == "sign up"
 #create an account
 #ask for desired user name
 puts "Enter desired username: "
@@ -85,29 +87,31 @@ puts "Enter desired password: "
 new_password = gets.chomp
 
 
-#add new user to users hash in account class
+#add new user to users hash in account class, initialize the class
 new_account = Account.new(new_user,new_password)
-puts "Welcome, #{new_user}!"
-
+#puts "Welcome, #{new_user}!"
+else
 
 #get user input for signing in
+#need a way to initialize the class (or maybe at this point I need two different classes/ a different approach to this.)
 puts "Enter Username: "
 entered_username =gets.chomp
 #get password
 puts "Enter password: "
 entered_password = gets.chomp
 #check for account
-if users.key = entered_username #having problems getting the users hash pulled, next step to investigate correct use of calling
-    if users.value == entered_password
+current_account=Account.new(entered_username,entered_password)
+if $users[key] == entered_username #having problems getting the users hash pulled, next step to investigate correct use of calling
+    if $users[value] == entered_password
          puts "You're Logged in!"
       else
-         password_error
+        current_account.password_error
       end
    
 else 
-     username_error
+     current_account.username_error
 end
-
+end
 #now that they are logged in, need to ask what action they would like to do!
 puts "What would you like to do? write post, follow user, see newsfeed?"
 action =gets.chomp.downcase
@@ -115,7 +119,7 @@ case action
   when "write post"
   	puts "What would you like to post?: "
     post = gets.chomp
-   posts[post] #relook at how to add things to hashes
+    new_account.write_post(post)  #This worked! So, I am definitely having a problem with initializing with a "sign in" instead of a "sign up"
   
   
   when "follow user"
@@ -124,12 +128,12 @@ case action
   if users[name].nil?
     puts "This user doesnt exist"
   else 
-    followed_users[name]
+    current_account.followed_users[name]
     puts "You are now following #{name}!"
   end
   
   when "see newsfeed"
-  	followed_posts
+  	current_account.followed_posts
  
   
 end
