@@ -33,7 +33,7 @@ class Account
  #create the method for handling incorrect passwords  
   def password_error
     return "Incorrect Password"
-  end
+  end 
   #create the method for handling incorrect username
   def username_error(username)
      #if @username == username
