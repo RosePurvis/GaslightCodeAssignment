@@ -18,6 +18,7 @@ will not be creating a clickable user interface, instead will simply do line pro
 class Account
    #create the users hash as global so it can be accessed from anywhere in the program
    $users=Hash.new
+   
    #create the posts hash to hold all posts, later I can sort out the ones just for my followed users
    $posts=Hash.new
    #create a has just for followed users
@@ -27,6 +28,8 @@ class Account
   def initialize(username,password)
     @username = username
     @password=password
+     #dummy initialization for testing purposes
+    $users["rpurvis"]="unicorns"
   end
   
     
@@ -35,7 +38,7 @@ class Account
     return "Incorrect Password"
   end 
   #create the method for handling incorrect username
-  def username_error(username)
+  def username_error
      #if @username == username
         
      #else
@@ -101,8 +104,8 @@ puts "Enter password: "
 entered_password = gets.chomp
 #check for account
 current_account=Account.new(entered_username,entered_password)
-if $users[key] == entered_username #having problems getting the users hash pulled, next step to investigate correct use of calling
-    if $users[value] == entered_password
+if $users.keys == entered_username #having problems getting the users hash pulled, next step to investigate correct use of calling
+    if $users.values == entered_password
          puts "You're Logged in!"
       else
         current_account.password_error
@@ -119,13 +122,13 @@ case action
   when "write post"
   	puts "What would you like to post?: "
     post = gets.chomp
-    new_account.write_post(post)  #This worked! So, I am definitely having a problem with initializing with a "sign in" instead of a "sign up"
+    current_account.write_post(post)  #This worked! So, I am definitely having a problem with initializing with a "sign in" instead of a "sign up"
   
   
   when "follow user"
   	puts "Give username: "
   name =gets.chomp
-  if users[name].nil?
+  if $users[name].nil?
     puts "This user doesnt exist"
   else 
     current_account.followed_users[name]
