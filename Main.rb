@@ -73,7 +73,9 @@ class Account
       return $followed_posts #ideally this is in chronological order, next step is to research how this would be handled
    end
 end
+#set variable for sign in loop to not
 
+current = false
 
 #first step is ask a person to sign up or log in!
 puts "Would you like to sign up or log in? "
@@ -81,6 +83,7 @@ input =gets.chomp.downcase
 
 if input == "sign up"
 #create an account
+
 #ask for desired user name
 puts "Enter desired username: "
 #take the given input and assign it to username hash
@@ -91,8 +94,12 @@ new_password = gets.chomp
 
 
 #add new user to users hash in account class, initialize the class
-new_account = Account.new(new_user,new_password)
-#puts "Welcome, #{new_user}!"
+current_account = Account.new(new_user,new_password)
+puts "Welcome, #{new_user}!"
+
+
+
+
 else
 
 #get user input for signing in
