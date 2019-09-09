@@ -69,8 +69,8 @@ class Account
   #create method to view followed user's posts
    def display_followed_posts
       #most_recent = lambda{|x| x < Time.now}
-      followed_posts=$posts.select($followed_users)
-      return followed_posts #ideally this is in chronological order, next step is to research how this would be handled
+      $followed_posts=$posts.select{$followed_users}
+      return $followed_posts #ideally this is in chronological order, next step is to research how this would be handled
    end
 end
 
@@ -131,12 +131,13 @@ case action
   if $users[name].nil?
     puts "This user doesnt exist"
   else 
-    current_account.followed_users[name]
+    current_account.follow_users[name]
     puts "You are now following #{name}!"
   end
   
   when "see newsfeed"
-  	current_account.followed_posts
+  	current_account.display_followed_posts
  
   
 end
+
