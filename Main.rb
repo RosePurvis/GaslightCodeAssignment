@@ -115,6 +115,9 @@ else
      current_account.username_error
 end
 end
+
+#make an arbitrary loop for the program to keep running 
+30.times {
 #now that they are logged in, need to ask what action they would like to do!
 puts "What would you like to do? write post, follow user, see newsfeed?"
 action =gets.chomp.downcase
@@ -140,3 +143,5 @@ case action
  
   
 end
+
+}
