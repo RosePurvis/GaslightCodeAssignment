@@ -55,7 +55,7 @@ class Account
    
   #create method for following a user
    def follow_user(username)
-      $followed_users = users.select(username)
+      $followed_users = $users.select{username}
    end
    
   #create method for writing post
@@ -131,7 +131,7 @@ case action
   if $users[name].nil?
     puts "This user doesnt exist"
   else 
-    current_account.follow_users[name]
+    current_account.follow_user(name)
     puts "You are now following #{name}!"
   end
   
@@ -140,4 +140,3 @@ case action
  
   
 end
-
